@@ -51,19 +51,20 @@ class merkleTree:
         # number of nodes required for the tree.
         # For e.g. if we have 4 transactions, i.e. 4 leafNodes, we will have a total of 7 nodes
         # in the tree. Hence this function takes in a list that looks like [1,2,3,4,5,6,7] and 
-        # creates a binary tree by recursively taking the middle element and making it a rootNode
-        # and asssigning it to parent.
-        def __buildTree(arr):
-            
-            if not arr:
-                return None
-            
-            mid = int(len(arr) / 2)
-            root = Node(str(arr[mid]))
-            
-            root.left = __buildTree(arr[:mid])
-            root.right = __buildTree(arr[mid+1:])
-            
+        # creates a binary tree by recursively inserting elements in inorder fasion.
+         def __buildTree(arr, root, i, n): 
+      
+            # Base case for recursion  
+            if i < n: 
+                temp = Node(str(arr[i]))  
+                root = temp  
+
+                # insert left child  
+                root.left = __buildTree(arr, root.left,2 * i + 1, n)  
+
+                # insert right child  
+                root.right = __buildTree(arr, root.right,2 * i + 2, n) 
+                
             return root
         
         # This function adds our transactions (leaf Node data) to the Leaf Nodes in the tree
