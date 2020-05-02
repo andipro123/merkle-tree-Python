@@ -52,7 +52,7 @@ class merkleTree:
         # For e.g. if we have 4 transactions, i.e. 4 leafNodes, we will have a total of 7 nodes
         # in the tree. Hence this function takes in a list that looks like [1,2,3,4,5,6,7] and 
         # creates a binary tree by recursively inserting elements in inorder fasion.
-         def __buildTree(arr, root, i, n): 
+        def __buildTree(arr, root, i, n): 
       
             # Base case for recursion  
             if i < n: 
